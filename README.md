@@ -1,2 +1,2 @@
-# auth token expample
+# auth token example
  
