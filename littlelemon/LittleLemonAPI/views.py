@@ -8,6 +8,7 @@ from rest_framework.response import Response
 # Create your views here.
 
 class MenuItemView(generics.ListCreateAPIView):
+    permission_classes = [IsAuthenticated]
     queryset = MenuItem.objects.all()
     serializer_class = MenuItemSerializer
 
