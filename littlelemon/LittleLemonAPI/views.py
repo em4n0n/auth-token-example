@@ -3,7 +3,8 @@ from rest_framework import generics
 from .serializers import MenuItemSerializer
 from .models import MenuItem
 from rest_framework.decorators import api_view, permission_classes
-from rest_framework.permissions import IsAuthenticaed
+from rest_framework.permissions import IsAuthenticated
+from rest_framework.response import Response
 # Create your views here.
 
 class MenuItemView(generics.ListCreateAPIView):
@@ -13,3 +14,8 @@ class MenuItemView(generics.ListCreateAPIView):
 class SingleMenuItemView(generics.RetrieveUpdateDestroyAPIView):
     queryset = MenuItem.objects.all()
     serializer_class = MenuItemSerializer
+
+@api_view()
+@permission_classes([IsAuthenticated])
+def msg(request):
+    return Response({"message":"This is a protected view"})
